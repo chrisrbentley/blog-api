@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import express from 'express';
 import routes from './routes/index.js';
+import passport from 'passport';
+import jwtStrategy from './middleware/jwtStrategy.js';
 
 const app = express();
 
@@ -20,7 +22,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/sign-up', routes.signUp);
+app.use('/', routes.auth);
+
+passport.use(jwtStrategy);
 
 app.listen(process.env.PORT, () => {
 	console.log(`App listening on port ${process.env.PORT}`);

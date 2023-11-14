@@ -1,5 +1,5 @@
-import signUp from './signUp.js';
+import auth from './auth.js';
 
 export default {
-	signUp,
+	auth,
 };
