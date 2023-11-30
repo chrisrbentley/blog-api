@@ -62,7 +62,7 @@ const onLogin = [
 		const match = await bcrypt.compare(password, user.password);
 		if (match) {
 			const opts = {};
-			opts.expiresIn = '10 minutes';
+			opts.expiresIn = process.env.JWT_EXPIRE;
 			const secret = process.env.JWT_SECRET;
 			const token = jwt.sign({ sub: user._id, username }, secret, opts);
 

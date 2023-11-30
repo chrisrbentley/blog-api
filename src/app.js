@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', routes.auth);
+app.use('/', routes.posts);
 
 passport.use(jwtStrategy);
 

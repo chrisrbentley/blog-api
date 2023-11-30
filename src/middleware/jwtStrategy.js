@@ -13,8 +13,13 @@ export default new JwtStrategy(
 	async (jwt_payload, done) => {
 		try {
 			const user = await User.findOne({ username: jwt_payload.username });
+			const userPayload = {
+				sub: user._id,
+				username: user.username,
+			};
+
 			if (user) {
-				return done(null, user);
+				return done(null, userPayload);
 			} else {
 				return done(null, false);
 			}
