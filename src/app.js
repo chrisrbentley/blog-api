@@ -5,6 +5,8 @@ import express from 'express';
 import routes from './routes/index.js';
 import passport from 'passport';
 import jwtStrategy from './middleware/jwtStrategy.js';
+import helmet from 'helmet';
+import compression from 'compression';
 
 const app = express();
 
@@ -19,6 +21,8 @@ const mongoConnect = async () => {
 mongoConnect();
 
 app.use(cors());
+app.use(helmet());
+app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
