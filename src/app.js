@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', routes.auth);
 app.use('/', routes.posts);
+app.use('/', routes.comments);
 
 passport.use(jwtStrategy);
 
