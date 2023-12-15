@@ -40,25 +40,25 @@ const getAllPosts = asyncHandler(async (_req, res) => {
 	if (posts.length === 0)
 		return res.status(404).send({ message: 'No posts found' });
 
-	res.status(200).send(posts);
+	return res.status(200).send(posts);
 });
 
 const getPublishedPosts = asyncHandler(async (_req, res) => {
 	const posts = await Post.find({ published: true }).sort({ dateCreated: -1 });
 
 	if (posts.length === 0)
-		return res.status(404).send({ message: 'No published posts found' });
+		return res.status(404).send({ message: 'No posts found' });
 
-	res.status(200).send(posts);
+	return res.status(200).send(posts);
 });
 
 const getUnpublishedPosts = asyncHandler(async (_req, res) => {
 	const posts = await Post.find({ published: false }).sort({ dateCreated: -1 });
 
 	if (posts.length === 0)
-		return res.status(404).send({ message: 'No unpublished posts found' });
+		return res.status(404).send({ message: 'No posts found' });
 
-	res.status(200).send(posts);
+	return res.status(200).send(posts);
 });
 
 const getPost = asyncHandler(async (req, res) => {
